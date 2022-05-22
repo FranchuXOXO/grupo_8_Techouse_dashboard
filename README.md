@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# grupo_8_TecHouse_dashboard
+
+Dashboard en React para proyecto "TecHouse" del grupo 8 de cursada Full Stack en DH.
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
