@@ -19,7 +19,7 @@ class ContentRowMovies extends Component {
             
             .then((apiData) => { 
                 let cajaProductos = { 
-                    color: "primary",
+                    color: "success",
                     titulo: "Productos en Base de Datos", 
                     valor: apiData[0].meta.count,
                     icono: "fas fa-box", 
@@ -31,10 +31,10 @@ class ContentRowMovies extends Component {
                     icono: "fas fa-user",
                 }; 
                 let cajaCompatibilidad = {
-                    color: "warning",
-                    titulo: "Categorias totales",
+                    color: "success",
+                    titulo: "compatibilidades totales",
                     valor: Object.keys(apiData[0].countByCategory).length,
-                    icono: "fas fa-bookmark",
+                    icono: "fa-solid fa-arrow-down",
                 }; 
             this.setState({ 
                 cajas: [cajaProductos, cajaUsuarios, cajaCompatibilidad] 
