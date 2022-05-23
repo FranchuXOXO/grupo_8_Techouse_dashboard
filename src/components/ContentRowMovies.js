@@ -1,15 +1,11 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import SmallCard from './SmallCard';
 
-class ContentRowMovies extends Component {
-    constructor() {
-        super()
-        this.state = {
-            cajas: []
-        }
-    }
-
-    componentDidMount() { 
+function ContentRowMovies () {
+    
+    let [cajas, setcajas]= useState([]) 
+    
+    useEffect(() => { 
         Promise.all([
             fetch('/api/products')
             .then(res => res.json()),
@@ -36,22 +32,23 @@ class ContentRowMovies extends Component {
                     valor: Object.keys(apiData[0].countByCategory).length,
                     icono: "fa-solid fa-arrow-down",
                 }; 
-            this.setState({ 
-                cajas: [cajaProductos, cajaUsuarios, cajaCompatibilidad] 
-            }); 
-        })}
-        render(){
+             
+                setcajas ([cajaProductos, cajaUsuarios, cajaCompatibilidad]) 
+            
+        })
+    }, [])
+        
             return (
                 <React.Fragment>
                 {/*<!-- Content Row -->*/}
                     <div className="row">
                 {
-                    this.state.cajas.map((caja,index)=>{
+                    cajas.map((caja,index)=>{
                         return <SmallCard  {...caja}  key= {index}/>
                     })
                 }      
             </div>
                 </React.Fragment>
-        )}
+        )
 }
 export default ContentRowMovies;
