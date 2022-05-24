@@ -1,14 +1,45 @@
-import React from 'react';
-import imagenFondo from '../assets/images/mandalorian.jpg';
+import React, { useEffect, useState } from 'react';
+//import imagenFondo from '../assets/images/mandalorian.jpg';
 import GenresInDb from './GenresInDb';
 import ContentRowMovies from './ContentRowMovies';
+
 function ContentRowTop(){
-    return(
+    let [lastProduct, setlastProduct]= useState({}) 
+    
+    useEffect(() => { 
+
+		    let lastArticle = {}
+
+            fetch('/api/products')
+
+            	.then(res => res.json())
+
+            	.then((apiData) => {
+					let ultimoIndice = apiData.data.length - 1;
+					let idUltimoProducto = apiData.data[ultimoIndice].id;
+					console.log (idUltimoProducto);
+                
+					return fetch (`/api/products/${idUltimoProducto}`)
+				})
+
+				.then(res => res.json()) 
+
+				.then ((product) => {
+					lastArticle = { 
+						nombre: product.product.product_name, 
+						descripcion: product.product.product_description,
+						imagen: "http://localhost:3001/api/products/image/" + product.product.id,
+					};
+					setlastProduct (lastArticle)
+				})
+    }, [])
+	
+	return(
         <React.Fragment>
 				{/*<!-- Content Row Top -->*/}
-				<div className="container-fluid">
+				<div className="container-fluid bg-dark">
 					<div className="d-sm-flex aligns-items-center justify-content-between mb-4">
-						<h1 className="h3 mb-0 text-gray-800">TecHouse Dashboard</h1>
+						<h1 className="h3 mb-0 text-white">TecHouse Dashboard</h1>
 					</div>
 				
 					{/*<!-- Content Row Movies-->*/}
@@ -26,10 +57,11 @@ function ContentRowTop(){
 								</div>
 								<div className="card-body">
 									<div className="text-center">
-										<img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: 40 +'rem'}} src={imagenFondo} alt=" Star Wars - Mandalorian "/>
+										<h5>{lastProduct.nombre}</h5>
+										<img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: 40 +'rem'}} src={lastProduct.imagen} alt=" Star Wars - Mandalorian "/>
 									</div>
-									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, consequatur explicabo officia inventore libero veritatis iure voluptate reiciendis a magnam, vitae, aperiam voluptatum non corporis quae dolorem culpa citationem ratione aperiam voluptatum non corporis ratione aperiam voluptatum quae dolorem culpa ratione aperiam voluptatum?</p>
-									<a className="btn btn-danger" target="_blank" rel="nofollow" href="/">View movie detail</a>
+									<p>{lastProduct.descripcion}</p>
+									<a className="btn btn-danger" target="_blank" rel="nofollow" href="/">Actualizar</a>
 								</div>
 							</div>
 						</div>
