@@ -16,35 +16,26 @@ function Movie(){
 									<thead>
 										<tr>
                                             <th>Id</th>
-                                            <th>Titulo</th>
-                                            <th>Calificación</th>
-                                            <th>Premios</th>
-                                            <th>Duración</th>
+                                            <th>product_name</th>
+                                            <th>product_description"</th>
+                                            <th>product_compatibilities.device_name</th>
 										</tr>
 									</thead>
 									<tfoot>
 										<tr>
                                             <th>Id</th>
-                                            <th>Titulo</th>
-                                            <th>Calificación</th>
-                                            <th>Premios</th>
-                                            <th>Duración</th>
+                                            <th>product_name</th>
+                                            <th>product_description</th>
+                                            <th>product_compatibilities.device_name</th>
 										</tr>
 									</tfoot>
 									<tbody>
 										<tr>
+											{/* Hay que hacer un componente para agregar filas */}
 											<td>01</td>
 											<td>Reto al destino</td>
 											<td>20</td>
                                             <td>15</td>
-											<td>120</td>
-										</tr>
-										<tr>
-											<td>02</td>
-											<td>La caida del halcon negro</td>
-											<td>10</td>
-											<td>18</td>
-											<td>240</td>
 										</tr>
 									</tbody>
 								</table>
