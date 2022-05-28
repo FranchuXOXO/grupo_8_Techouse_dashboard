@@ -5,7 +5,7 @@ import ContentRowMovies from './ContentRowMovies';
 
 function ContentRowTop(){
     let [lastProduct, setlastProduct]= useState({}) 
-    
+   
     useEffect(() => { 
 
 		    let lastArticle = {}
@@ -61,7 +61,7 @@ function ContentRowTop(){
 										<img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: 20 +'rem'}} src={lastProduct.imagen} alt=" Star Wars - Mandalorian "/>
 									</div>
 									<p>{lastProduct.descripcion}</p>
-									<a className="btn btn-danger" target="_blank" rel="nofollow" href="/">Actualizar</a>
+									
 								</div>
 							</div>
 						</div>
